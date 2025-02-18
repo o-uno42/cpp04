@@ -1,4 +1,5 @@
 #include "Cat.hpp"
+#include "Brain.hpp"
 
 Cat::Cat() : Animal("Cat") {
     std::cout << "--- Cat constructor called" << std::endl;
@@ -14,6 +15,8 @@ Cat &Cat::operator=(const Cat &cat) {
     std::cout << "--- Cat assignment operator constructor called" << std::endl;
     if (this != &cat) {
         Animal::operator=(cat);
+        delete _brain;
+        _brain = new Brain(*cat._brain);
     }
     return *this;
 }

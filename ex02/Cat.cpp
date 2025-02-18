@@ -13,6 +13,8 @@ Cat::Cat(const Cat &cat) : AAnimal(cat) {
 Cat &Cat::operator=(const Cat &cat) {
     if (this != &cat) {
         AAnimal::operator=(cat);
+        delete _brain;
+        _brain = new Brain(*cat._brain);
     }
     return *this;
 }
